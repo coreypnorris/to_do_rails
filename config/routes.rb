@@ -3,4 +3,5 @@ ToDo::Application.routes.draw do
   match('tasks/new', {:via => :get, :to => 'tasks#new'})
   match('tasks', {:via => :post, :to => 'tasks#create'})
   match('tasks/:id', {:via => [:patch, :put], :to => 'tasks#update'})
+  match('tasks/:id', {:via => :delete, :to => 'tasks#destroy'})
 end

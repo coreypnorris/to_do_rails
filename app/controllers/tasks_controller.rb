@@ -20,4 +20,11 @@ class TasksController < ApplicationController
     @task.update(:done => params[:done])
     render('tasks/index.html.erb')
   end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    @tasks = Task.all
+    render('tasks/index.html.erb')
+  end
 end
