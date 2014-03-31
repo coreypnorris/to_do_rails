@@ -27,6 +27,8 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     @tasks = Task.all
+    @list_done = Task.list_done
+    @list_not_done = Task.list_not_done
     render('tasks/index.html.erb')
   end
 end

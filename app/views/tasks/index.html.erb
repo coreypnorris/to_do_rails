@@ -4,9 +4,10 @@
   <% @list_not_done.each do |task| %>
     <li><%=task.description %></li>
     <form action="/tasks/<%= task.id %>" method="post">
-    <input name="_method" type="hidden" value="patch">
-    <input name="done" type="hidden" value="true">
-    <button>Mark done</button>
+      <input name="_method" type="hidden" value="patch">
+      <input name="done" type="hidden" value="true">
+      <button>Mark done</button>
+    </form>
     <p><a href="/tasks/<%= task.id %>"
           data-confirm="You sure?"
           data-method="delete"
@@ -19,7 +20,6 @@
 <ul>
   <% @list_done.each do |task| %>
     <li><%=task.description %></li>
-    </form>
     <p><a href="/tasks/<%= task.id %>"
           data-confirm="You sure?"
           data-method="delete"
