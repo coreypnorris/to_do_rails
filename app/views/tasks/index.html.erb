@@ -1,19 +1,24 @@
-<h1>Tasks</h1>
+<h1>Incomplete Tasks</h1>
 
 <ul>
-  <% @tasks.each do |task| %>
+  <% @list_not_done.each do |task| %>
     <li><%=task.description %></li>
-    <ul>
-      <% if task.done == false %>
-        <li>Not done</li>
-      <% else %>
-        <li>Task completed</li>
-      <%end%>
-    </ul>
     <form action="/tasks/<%= task.id %>" method="post">
-      <input name="_method" type="hidden" value="patch">
-      <input name="done" type="hidden" value="true">
-      <button>Mark done</button>
+    <input name="_method" type="hidden" value="patch">
+    <input name="done" type="hidden" value="true">
+    <button>Mark done</button>
+    <p><a href="/tasks/<%= task.id %>"
+          data-confirm="You sure?"
+          data-method="delete"
+          rel="nofollow">Delete</a></p>
+  <% end %>
+</ul>
+
+<h1>Completed Tasks</h1>
+
+<ul>
+  <% @list_done.each do |task| %>
+    <li><%=task.description %></li>
     </form>
     <p><a href="/tasks/<%= task.id %>"
           data-confirm="You sure?"
@@ -22,4 +27,8 @@
   <% end %>
 </ul>
 
+
+
+
 <p><a href="/tasks/new">Click here to create a new task</a></p>
+

@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @list_done = Task.list_done
+    @list_not_done = Task.list_not_done
     render('tasks/index.html.erb')
   end
 
@@ -15,7 +16,8 @@ class TasksController < ApplicationController
   end
 
   def update
-    @tasks = Task.all
+    @list_done = Task.list_done
+    @list_not_done = Task.list_not_done
     @task = Task.find(params[:id])
     @task.update(:done => params[:done])
     render('tasks/index.html.erb')
