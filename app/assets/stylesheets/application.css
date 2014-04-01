@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+ul {
+  display: inline-block;
+}
+
+button {
+  display: inline-block;
+}

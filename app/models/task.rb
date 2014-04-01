@@ -8,4 +8,12 @@ class Task < ActiveRecord::Base
   def self.list_not_done
     Task.where(:done => false)
   end
+
+  def mark_done
+    # @list_done = Task.list_done
+    # @list_not_done = Task.list_not_done
+    # @task = Task.find(params[:id])
+    self.update(:done => true)
+    render('tasks/index.html.erb')
+  end
 end

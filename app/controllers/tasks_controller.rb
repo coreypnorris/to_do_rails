@@ -15,13 +15,11 @@ class TasksController < ApplicationController
     render('tasks/success.html.erb')
   end
 
-  def update
-    @list_done = Task.list_done
-    @list_not_done = Task.list_not_done
+  def edit
     @task = Task.find(params[:id])
-    @task.update(:done => params[:done])
-    render('tasks/index.html.erb')
+    render('tasks/edit.html.erb')
   end
+
 
   def destroy
     @task = Task.find(params[:id])
@@ -29,6 +27,13 @@ class TasksController < ApplicationController
     @tasks = Task.all
     @list_done = Task.list_done
     @list_not_done = Task.list_not_done
+    render('tasks/index.html.erb')
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update(:description => params[:description],
+                  :done => params[:done])
     render('tasks/index.html.erb')
   end
 end
